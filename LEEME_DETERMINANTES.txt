@@ -1,0 +1,47 @@
+MÓDULO DE DETERMINANTES
+
+Se conservan los archivos originales. Solo se agregan tres líneas a main.py
+para importar la nueva vista, registrarla y añadirla al menú lateral.
+Archivos nuevos: core/determinantes.py y ui/vista_determinantes.py.
+
+EJECUCIÓN
+Desde la carpeta proyecto:
+  pip install -r requirements.txt
+  python main.py
+
+USO
+1. Abre Determinantes en el menú lateral.
+2. Escribe una matriz cuadrada, una fila por línea, con valores separados
+   por espacios o comas. Usa punto para los decimales.
+3. Pulsa Analizar y recomendar. La recomendación aparece antes de elegir.
+4. Elige Calcular por Cofactores o Calcular por LU.
+
+Ejemplo:
+2 3
+1 4
+Resultado con ambos métodos: 5.
+
+Se admiten enteros, decimales y fracciones como -1/2. Los cálculos usan
+la clase Fraccion del proyecto. Los algoritmos matemáticos están escritos
+con Python estándar, sin NumPy, SciPy ni funciones avanzadas de math.
+La interfaz mantiene CustomTkinter, ya utilizado por la calculadora.
+
+LU utiliza pivoteo parcial: P*A=L*U. Se muestran P, L, U, las operaciones,
+el número de intercambios y el signo correcto del determinante.
+La recomendación es una heurística basada en orden y ceros; no representa
+una garantía de menor tiempo para toda matriz.
+
+No se fija un máximo de dimensión. Por su costo factorial, cofactores
+interrumpe de forma controlada al superar 100000 llamadas y permite elegir
+LU. El historial muestra hasta 600 pasos y avisa si omite los restantes.
+Los cálculos se realizan en segundo plano para mantener la ventana activa.
+
+VERIFICACIONES REALIZADAS
+- 210 matrices aleatorias de órdenes 1 a 6, con entradas racionales.
+- Ambos determinantes comparados con una fórmula independiente por permutaciones.
+- Identidad P*A=L*U y conservación de la matriz ingresada.
+- Matrices singulares, intercambio de filas, orden 1, decimales y fracciones.
+- Entradas inválidas, matrices no cuadradas y división por cero.
+- Compilación e importación de todas las vistas.
+- Comparación de los archivos originales: solamente cambia main.py.
+No se pudo realizar la prueba visual de la ventana en el entorno de entrega.
